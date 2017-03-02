@@ -16,15 +16,14 @@ namespace :wiki do
     end
 
     task build: 'wiki:setup' do
-      categories = Hash.new{ |h, k| h[k] = [] }
+      categories = Hash.new { |h, k| h[k] = [] }
       wiki = this_wiki
 
       wiki.pages.each do |page|
-        if page.metadata && page.metadata['tags']
-          tags = YAML.load(page.metadata['tags'])
-          tags.each do |tag|
-            categories[tag] << page
-          end
+        next unless page.metadata && page.metadata['tags']
+        tags = YAML.load(page.metadata['tags'])
+        tags.each do |tag|
+          categories[tag] << page
         end
       end
 
@@ -35,21 +34,24 @@ namespace :wiki do
         if category_page
           replace_after_marker category_page, category_list(pages)
         else
-          commit = commit_defaults.merge({ message: "Create #{page_title}" })
-          content = "\n\n#{seperator}\n\n" + category_list(pages)
-          wiki.write_page(page_title, :markdown, content, commit, 'category-pages')
+          commit = commit_defaults.merge(message: "Create #{page_title}")
+          content = "\n\n#{seperator}\n\n#{category_list(pages)}"
+          wiki.write_page(page_title,
+                          :markdown,
+                          content,
+                          commit,
+                          'category-pages')
         end
       end
 
       category_pages.each do |page|
         category_name = page.name.sub(/^Category: /, '').downcase
-        unless categories.has_key?(category_name)
-          if top_content(page).blank?
-            commit = commit_defaults.merge({ message: "Delete #{page.name}" })
-            wiki.delete_page(page, commit)
-          else
-            replace_after_marker page, nil
-          end
+        next if categories.key?(category_name)
+        if top_content(page).blank?
+          commit = commit_defaults.merge(message: "Delete #{page.name}")
+          wiki.delete_page(page, commit)
+        else
+          replace_after_marker page, nil
         end
       end
     end
