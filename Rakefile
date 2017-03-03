@@ -7,6 +7,7 @@ namespace :wiki do
   directory 'category-pages'
   task setup: 'category-pages'
 
+  desc 'Build the category pages and update the Home page'
   task categories: 'wiki:categories:default'
 
   namespace :categories do
@@ -15,6 +16,7 @@ namespace :wiki do
       Rake::Task['wiki:categories:index'].invoke
     end
 
+    desc 'Build the pages for all required categories. Remove unneeded ones.'
     task build: 'wiki:setup' do
       categories = Hash.new { |h, k| h[k] = [] }
       wiki = this_wiki
@@ -56,6 +58,7 @@ namespace :wiki do
       end
     end
 
+    desc 'Update the "Home" page with a list of all of the current categories'
     task :index do
       wiki = this_wiki
       index_page = wiki.page('Home')
