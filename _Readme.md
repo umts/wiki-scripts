@@ -10,7 +10,7 @@ sidebar below the page list.  From within your clone, run the following:
 
 ```bash
 $ curl -L https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
-  tar -xz --strip-components=1
+  tar -xz --strip-components=1 --exclude=Readme.md
 ```
 
 Tasks
