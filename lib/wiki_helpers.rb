@@ -3,7 +3,7 @@ def category_pages
 end
 
 def category_list(pages)
-  pages.map do |page|
+  pages.sort_by(&:title).map do |page|
     "* [[#{page.title}]]"
   end.join("\n")
 end
