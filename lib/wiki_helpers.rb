@@ -18,6 +18,11 @@ def delete_page(page)
   this_wiki.delete_page(page, commit)
 end
 
+def image_regex
+  #![Alt text]({filename})
+  /!\[(?<alt>[^\[\]]*)\]\(\{(?<filename>[^}]+)\}\)/
+end
+
 def new_category(page_title, pages)
   commit = commit_defaults.merge(message: "Create #{page_title}")
   content = "\n\n#{seperator}\n\n#{category_list(pages)}"
