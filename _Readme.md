@@ -1,12 +1,12 @@
-This project contains a handful of `rake` tasks that can be executed on a
-local clone of a GitHub wiki to automate page categorization, custom formatting,
+This project contains a handful of `rake` tasks that can be run in a local
+clone of a GitHub wiki to automate page categorization, custom formatting,
 etc.
 
 Installation
 ============
 
-Clone your wiki git repository locally. The clone URL can be found in the
-sidebar below the page list.  From within your clone, run the following:
+Clone your wiki's git repository locally. The clone URL can be found in the
+sidebar below the page list.  From within your local clone, run the following:
 
 ```bash
 $ curl -L https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
@@ -17,7 +17,8 @@ Tasks
 =====
 
 *  `rake wiki:setup` - Make sure required directories and files exist. This
-   task is a prerequisite of the others.
+   task is a prerequisite of the others; you probably won't need to run it
+   directly.
 *  `rake wiki:categories` - Executes `wiki:categories:build` and
    `wiki:categories:index` below.
 *  `rake wiki:categories:build` - Builds a page in the `category-pages/`
@@ -49,4 +50,4 @@ The resulting category pages will have a line on them that looks like
 
 Anything you place **above** that line will be preserved when the category
 pages are regenerated. Unused category pages are usually deleted, but will
-be preserved if there is any content above this line.
+be preserved if there is any custom content above this line.

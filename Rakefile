@@ -36,13 +36,7 @@ namespace :wiki do
         if category_page
           replace_after_marker category_page, category_list(pages)
         else
-          commit = commit_defaults.merge(message: "Create #{page_title}")
-          content = "\n\n#{seperator}\n\n#{category_list(pages)}"
-          wiki.write_page(page_title,
-                          :markdown,
-                          content,
-                          commit,
-                          'category-pages')
+          new_category page_title, pages
         end
       end
 
@@ -50,8 +44,7 @@ namespace :wiki do
         category_name = page.name.sub(/^Category: /, '').downcase
         next if categories.key?(category_name)
         if top_content(page).blank?
-          commit = commit_defaults.merge(message: "Delete #{page.name}")
-          wiki.delete_page(page, commit)
+          delete_page page
         else
           replace_after_marker page, nil
         end
