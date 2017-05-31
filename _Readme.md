@@ -6,12 +6,21 @@ Installation
 ============
 
 Clone your wiki's git repository locally. The clone URL can be found in the
-sidebar below the page list.  From within your local clone, run the following:
+sidebar below the page list.
+
+![Clone URL](wiki-clone-url.png)
+
+From within your local clone, run the following:
 
 ```bash
 $ curl -L https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
   tar -xz --strip-components=1 --exclude=Readme.md
 ```
+
+Finally, you'll want to add, commit, and push the new files in your wiki. None
+of the files from this project will show up online in your wiki, Gollum ignores
+unknown filetypes, as well as files that start with underscores (with the
+exception of \_Footer and \_Sidebar).
 
 Tasks
 =====
