@@ -20,7 +20,7 @@ $ curl -L https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
 Finally, you'll want to add, commit, and push the new files in your wiki. None
 of the files from this project will show up online in your wiki, Gollum ignores
 unknown file types, as well as files that start with underscores (with the
-exception of `_Footer'` and `_Sidebar`).
+exception of `_Footer` and `_Sidebar`).
 
 Tasks
 =====
