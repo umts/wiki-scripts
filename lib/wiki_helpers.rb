@@ -18,9 +18,13 @@ def delete_page(page)
   this_wiki.delete_page(page, commit)
 end
 
-def image_regex
+def image_pattern
   #![Alt text]({filename})
   /!\[(?<alt>[^\[\]]*)\]\(\{(?<filename>[^}]+)\}\)/
+end
+
+def image_url(filename)
+  "https://raw.githubusercontent.com/wiki/#{repo_name}/images/#{filename}"
 end
 
 def new_category(page_title, pages)
@@ -36,6 +40,12 @@ def replace_after_marker(page, content)
     commit = commit_defaults.merge(message: "Update #{page.name}")
     this_wiki.update_page(page, page.name, page.format, combined_content, commit)
   end
+end
+
+def repo_name
+  url = this_wiki.repo.config['remote.origin.url']
+  username, reponame = url.split(%r{[/:.]})[-3, 2]
+  "#{username}/#{reponame}"
 end
 
 def seperator

@@ -34,6 +34,8 @@ Tasks
    directory for each "tag" in the metadata. See below.
 *  `rake wiki:categories:index` - Updates the "Home" page with a list of the
    categories in the wiki.
+*  `rake wiki:images` - Replaces short image tags with full links to the raw
+   GitHub address.
 
 Categorizing Pages
 ==================
@@ -60,3 +62,20 @@ The resulting category pages will have a line on them that looks like
 Anything you place **above** that line will be preserved when the category
 pages are regenerated. Unused category pages are usually deleted, but will
 be preserved if there is any custom content above this line.
+
+Images
+======
+
+You can place images in the `images/` directory which is created for you by
+the `wiki:setup` task. Then, in your markdown, refer to them like this:
+
+```markdown
+![Alt text]({filename})
+```
+
+The text inside the `{}`s is the file *name* only, no directory name. It will
+be replaced by an address that looks like the following
+
+```markdown
+![Alt text](https://raw.githubusercontent.com/wiki/user/repo/images/filename)
+```
