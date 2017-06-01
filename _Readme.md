@@ -79,3 +79,17 @@ be replaced by an address that looks like the following
 ```markdown
 ![Alt text](https://raw.githubusercontent.com/wiki/user/repo/images/filename)
 ```
+
+Uninstallation
+==============
+
+This may not be perfect, but it should remove files in your wiki that come from
+this script repository
+
+```bash
+$ curl -Ls https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
+  tar -tvz --strip-components=1 --show-transformed-names --exclude=Readme.md | \
+  sed -ne 's/^-.* \([^ ]\+\)/\1/p' | xargs rm
+```
+
+**Check** to make sure you didn't ruin anything, then you can add, commit, push.
