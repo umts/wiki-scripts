@@ -13,8 +13,8 @@ sidebar below the page list.
 From within your local clone, run the following:
 
 ```bash
-$ curl -L https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
-  tar -xz --strip-components=1 --exclude=Readme.md
+$ curl -Ls https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
+  tar -xz --strip-components=1
 ```
 
 Finally, you'll want to add, commit, and push the new files in your wiki. None
@@ -89,7 +89,7 @@ this script repository
 
 ```bash
 $ curl -Ls https://github.com/umts/wiki-scripts/archive/master.tar.gz | \
-  tar -tvz --strip-components=1 --show-transformed-names --exclude=Readme.md | \
+  tar -tvz --strip-components=1 --show-transformed-names | \
   sed -ne 's/^-.* \([^ ]\+\)/\1/p' | xargs rm
 ```
 
