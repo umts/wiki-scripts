@@ -44,8 +44,12 @@ end
 
 def repo_name
   url = this_wiki.repo.config['remote.origin.url']
-  username, reponame = url.split(%r{[/:.]})[-3, 2]
-  "#{username}/#{reponame}"
+  match = url.match repo_pattern
+  "#{ match[:username] }/#{ match[:repo] }"
+end
+
+def repo_pattern
+  %r{(?:\w+@|https://)(?:\w|\.)+(?:/|:)(?<username>\w+)/(?<repo>.+)\.wiki\.git}
 end
 
 def seperator
