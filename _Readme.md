@@ -25,6 +25,7 @@ exception of `_Footer` and `_Sidebar`).
 Tasks
 =====
 
+*  `rake wiki` - Runs all of the wiki tasks below
 *  `rake wiki:setup` - Make sure required directories and files exist. This
    task is a prerequisite of the others; you probably won't need to run it
    directly.
