@@ -24,7 +24,7 @@ def image_pattern
 end
 
 def image_url(filename)
-  "https://raw.githubusercontent.com/wiki/#{repo_name}/images/#{filename}"
+  "https://raw.githubusercontent.com/wiki/#{repo_name}/wiki-images/#{filename}"
 end
 
 def new_category(page_title, pages)

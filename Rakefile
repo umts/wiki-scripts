@@ -8,10 +8,10 @@ task wiki: 'wiki:default'
 
 namespace :wiki do
   directory 'category-pages'
-  directory 'images'
+  directory 'wiki-images'
 
   desc 'Create required files and directories'
-  task setup: ['category-pages', 'images']
+  task setup: ['category-pages', 'wiki-images']
 
   task default: :setup do
     Rake::Task['wiki:categories'].invoke
