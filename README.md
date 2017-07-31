@@ -67,8 +67,8 @@ be preserved if there is any custom content above this line.
 Images
 ======
 
-You can place images in the `images/` directory which is created for you by
-the `wiki:setup` task. Then, in your markdown, refer to them like this:
+You can place images in the `wiki-images/` directory which is created for you
+by the `wiki:setup` task. Then, in your markdown, refer to them like this:
 
 ```markdown
 ![Alt text]({filename})
